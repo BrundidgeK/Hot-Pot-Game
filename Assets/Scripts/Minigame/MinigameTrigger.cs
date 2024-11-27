@@ -23,6 +23,7 @@ public class MinigameTrigger : MonoBehaviour
 
     private void OnMouseDown()
     {
-        SceneManager.LoadSceneAsync(miniGame, LoadSceneMode.Additive);
+        if(SceneManager.sceneCount == 1)
+            SceneManager.LoadSceneAsync(miniGame, LoadSceneMode.Additive);
     }
 }

@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour
 
     void Start()
     {
-        slots = GetComponentsInChildren<InventorySlot>();
+        slots = FindObjectsOfType<InventorySlot>();
     }
 
     public void addFood(FoodObject food)
@@ -29,8 +29,20 @@ public class InventoryManager : MonoBehaviour
 
     public void selectPlate(InventorySlot slot)
     {
-        if(selected  != null) 
-            selected.selectPlate(false);
+        if (selected != null)
+            selected.deselectPlate();
         selected = slot;
+    }
+
+    public FoodObject getSelectedFood()
+    {
+        if (selected != null)
+            return selected.food;
+        return null;
+    }
+
+    public InventorySlot getCurrentSlot()
+    {
+        return selected;
     }
 }

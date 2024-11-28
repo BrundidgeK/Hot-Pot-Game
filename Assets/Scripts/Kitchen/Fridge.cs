@@ -47,4 +47,9 @@ public class Fridge : MonoBehaviour
     {
         return assortedTypes[foodType.ToString()].Count;
     }
+
+    public List<FoodObject> getFoodList()
+    {
+        return foods;
+    }
 }

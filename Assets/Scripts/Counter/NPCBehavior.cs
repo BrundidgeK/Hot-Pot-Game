@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor; 
-using System.IO;
 
 public class NPCBehavior : MonoBehaviour
 {
@@ -14,12 +12,25 @@ public class NPCBehavior : MonoBehaviour
 
     [SerializeField]
     private string name = "Random";
+
+    [Header("Dialog")]
     [SerializeField]
-    private string[] dialog = new string[]
+    private string[] introDialog = new string[]
     {
         "Hello",
         "How are you?",
         "Can I have the "
+    };
+    [SerializeField]
+    private string[] wrongOrderDia = new string[]
+    {
+        "Um, I think you got my order wrong",
+        "I ordered the "
+    };
+    [SerializeField]
+    private string[] rightOrderDia = new string[]
+    {
+        "Thank you!"
     };
 
     void Awake()
@@ -41,26 +52,31 @@ public class NPCBehavior : MonoBehaviour
 
     private void OnMouseDown()
     {
-        FindObjectOfType<DialogManager>().setDialog(name, dialog);
+        DialogManager man = FindObjectOfType<DialogManager>();
+        FoodObject selectedFood = FindObjectOfType<InventoryManager>().getSelectedFood();
+        if(selectedFood == null)
+        {
+            man.setDialog(name, introDialog);
+        }
+        else
+        {
+            if (selectedFood.name.Equals(desiredFood.name))
+            {
+                man.setDialog(name, rightOrderDia);
+                FindObjectOfType<InventoryManager>().getCurrentSlot().changeFood(null);
+                Destroy(gameObject);
+            }
+            else
+                man.setDialog(name, wrongOrderDia);
+        }
+
     }
 
     private void findFoodObject()
     {
-        string folderPath = "Assets/ScriptableObjects/Food";  
-
-        string[] assetPaths = Directory.GetFiles(folderPath, "*.asset");
-
-        if (assetPaths.Length > 0)
-        {
-            string randomAssetPath = assetPaths[Random.Range(0, assetPaths.Length)];
-
-            desiredFood = AssetDatabase.LoadAssetAtPath<FoodObject>(randomAssetPath);
-        }
-        else
-        {
-            Debug.LogWarning("No ScriptableObjects found in folder: " + folderPath);
-        }
-
-        dialog[dialog.Length-1] += desiredFood.name;
+        List<FoodObject> available = FindObjectOfType<Fridge>().getFoodList();
+        desiredFood = available[Random.Range(0, available.Count)];
+        introDialog[introDialog.Length - 1] += desiredFood.name;
+        wrongOrderDia[wrongOrderDia.Length - 1] += desiredFood.name;
     }
 }

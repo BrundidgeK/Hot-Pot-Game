@@ -12,6 +12,8 @@ public class DialogManager : MonoBehaviour
 
     private Queue<string> lines = new Queue<string>();
 
+    public static bool dialogActive;
+
     public void setDialog(string name, string[] dialog)
     {
         activate(true);
@@ -43,6 +45,7 @@ public class DialogManager : MonoBehaviour
 
     private void activate(bool a)
     {
+        dialogActive = a;
         for(int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(a);

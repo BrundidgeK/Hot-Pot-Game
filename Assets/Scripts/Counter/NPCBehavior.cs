@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class NPCBehavior : MonoBehaviour
 {
@@ -20,23 +21,25 @@ public class NPCBehavior : MonoBehaviour
         "Hello",
         "How are you?",
         "Can I have the "
-    };
-    [SerializeField]
-    private string[] wrongOrderDia = new string[]
+    },
+    wrongOrderDia = new string[]
     {
         "Um, I think you got my order wrong",
         "I ordered the "
-    };
-    [SerializeField]
-    private string[] rightOrderDia = new string[]
+    },
+    rightOrderDia = new string[]
     {
         "Thank you!"
     };
+
+    private Animator anim;
+    private bool dialoging, orderComplete;
 
     void Awake()
     {
         if(desiredFood == null)
             findFoodObject();    
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,28 +51,48 @@ public class NPCBehavior : MonoBehaviour
         {
             Debug.Log("Uh oh");
         }
+
+        if (dialoging)
+        {
+            dialoging = DialogManager.dialogActive;
+        }
+        else if (orderComplete)
+        {
+            FindObjectOfType<CustomerSpawning>().changeCount(-1, transform.position);
+            Destroy(gameObject);
+        }
+
+        anim.SetBool("Talking", dialoging);
     }
 
     private void OnMouseDown()
     {
-        DialogManager man = FindObjectOfType<DialogManager>();
-        FoodObject selectedFood = FindObjectOfType<InventoryManager>().getSelectedFood();
-        if(selectedFood == null)
+        if (EventSystem.current.IsPointerOverGameObject())
         {
-            man.setDialog(name, introDialog);
-        }
-        else
-        {
-            if (selectedFood.name.Equals(desiredFood.name))
-            {
-                man.setDialog(name, rightOrderDia);
-                FindObjectOfType<InventoryManager>().getCurrentSlot().changeFood(null);
-                Destroy(gameObject);
-            }
-            else
-                man.setDialog(name, wrongOrderDia);
+            return; 
         }
 
+        if (!DialogManager.dialogActive)
+        {
+            dialoging = true;
+            DialogManager man = FindObjectOfType<DialogManager>();
+            FoodObject selectedFood = FindObjectOfType<InventoryManager>().getSelectedFood();
+            if (selectedFood == null)
+            {
+                man.setDialog(name, introDialog);
+            }
+            else
+            {
+                if (selectedFood.name.Equals(desiredFood.name))
+                {
+                    man.setDialog(name, rightOrderDia);
+                    FindObjectOfType<InventoryManager>().getCurrentSlot().changeFood(null);
+                    orderComplete = true;
+                }
+                else
+                    man.setDialog(name, wrongOrderDia);
+            }
+        }
     }
 
     private void findFoodObject()
@@ -78,5 +101,10 @@ public class NPCBehavior : MonoBehaviour
         desiredFood = available[Random.Range(0, available.Count)];
         introDialog[introDialog.Length - 1] += desiredFood.name;
         wrongOrderDia[wrongOrderDia.Length - 1] += desiredFood.name;
+    }
+
+    public void changePosition()
+    {
+        transform.position -= (Vector3)FindObjectOfType<CustomerSpawning>().spacingBTWCust;
     }
 }

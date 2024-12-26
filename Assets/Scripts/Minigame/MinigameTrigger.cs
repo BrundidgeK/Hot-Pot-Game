@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MinigameTrigger : MonoBehaviour
@@ -23,7 +24,11 @@ public class MinigameTrigger : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(SceneManager.sceneCount == 1)
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+        if (SceneManager.sceneCount == 1)
             SceneManager.LoadSceneAsync(miniGame, LoadSceneMode.Additive);
     }
 }

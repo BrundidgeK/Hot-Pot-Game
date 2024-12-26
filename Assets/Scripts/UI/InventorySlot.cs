@@ -10,7 +10,7 @@ public class InventorySlot : MonoBehaviour
     private TMP_Text text;
     public FoodObject food;
 
-    private Color normal = new Color(1, 1, 1), selected = new Color(.75f, .75f, .75f);
+    private Color normal = new Color(1, 1, 1, 0), selected = new Color(1, 1, 1, .3f);
     [SerializeField]
     private bool selectedPlate;
 

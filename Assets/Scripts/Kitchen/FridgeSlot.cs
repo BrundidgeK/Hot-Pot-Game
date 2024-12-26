@@ -27,8 +27,7 @@ public class FridgeSlot : MonoBehaviour
 
     public void NextInList()
     {
-        index++;
-        if (index == fridge.listLength(type))
+        if (++index == fridge.listLength(type))
             index = 0;
         food = fridge.getFood(type, index);
         foodText.text = food.name;
@@ -37,5 +36,10 @@ public class FridgeSlot : MonoBehaviour
     public void foodInInventory()
     {
         FindObjectOfType<InventoryManager>().addFood(food);
+    }
+
+    public void foodInMinigame()
+    {
+        FindObjectOfType<FoodManager>().addFood(food);
     }
 }

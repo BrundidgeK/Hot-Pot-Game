@@ -12,5 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e6520be0ceeee14fb905fb21ba5ae3e, type: 3}
   m_Name: o
   m_EditorClassIdentifier: 
-  ingredients: []
-  result: {fileID: 0}
+  ingredients:
+  - {fileID: 11400000, guid: 17bdcac8c34ab3d4e85daccd7dbe409d, type: 2}
+  - {fileID: 11400000, guid: f78c6cec5d2cce746aaed3408ccb1f94, type: 2}
+  - {fileID: 11400000, guid: 653ccc631587c96499e6728da06ba8b1, type: 2}
+  result: {fileID: 11400000, guid: 58ac3f7b46b513043bd2e1885d9bc20d, type: 2}

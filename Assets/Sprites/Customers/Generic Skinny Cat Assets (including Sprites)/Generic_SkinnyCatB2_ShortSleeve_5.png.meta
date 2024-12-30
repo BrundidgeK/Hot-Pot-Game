@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,7 +121,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Generic_SkinnyCatB2_ShortSleeve_5_0
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 1000
+        height: 2000
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d0eee5532d7f140afac4d8a44f6303
+      internalID: -1888247559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic_SkinnyCatB2_ShortSleeve_5_1
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 0
+        width: 1000
+        height: 2000
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a8c4eb216405145a7cf4db79309d9f
+      internalID: -339015053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Generic_SkinnyCatB2_ShortSleeve_5_2
+      rect:
+        serializedVersion: 2
+        x: 2583
+        y: 5
+        width: 1000
+        height: 2000
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15f0cd15afab84540ad204080b368d73
+      internalID: -1317366161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +195,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Generic_SkinnyCatB2_ShortSleeve_5_0: -1888247559
+      Generic_SkinnyCatB2_ShortSleeve_5_1: -339015053
+      Generic_SkinnyCatB2_ShortSleeve_5_2: -1317366161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

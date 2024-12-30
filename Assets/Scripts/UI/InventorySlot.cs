@@ -13,9 +13,11 @@ public class InventorySlot : MonoBehaviour
     private Color normal = new Color(1, 1, 1, 0), selected = new Color(1, 1, 1, .3f);
     [SerializeField]
     private bool selectedPlate;
+    InventoryManager man;
 
     private void Start()
     {
+        man = FindObjectOfType<InventoryManager>();
         image = GetComponent<Image>();
         text = transform.GetChild(0).GetComponent<TMP_Text>();
     }
@@ -24,28 +26,19 @@ public class InventorySlot : MonoBehaviour
     {
         this.food = food;
         text.text = food == null ? "Empty" : food.name;
+        if (food == null) selectPlate(false);
     }
 
     public bool hasFood() { return this.food != null; }
 
-    public void selectPlate()
+    public void selectPlate(bool sel)
     {
-        selectedPlate = !selectedPlate;
-        InventoryManager man = FindObjectOfType<InventoryManager>();
+        selectedPlate = sel;
         if (selectedPlate)
-        {
             man.selectPlate(this);
-        }
-        else
-        {
+        else if(man.getCurrentSlot() == this)
             man.selectPlate(null);
-        }
-        image.color = selectedPlate ? selected : normal;
-    }
 
-    public void deselectPlate()
-    {
-        selectedPlate = false;
-        image.color = normal;
+        image.color = selectedPlate ? selected : normal;
     }
 }

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6520be0ceeee14fb905fb21ba5ae3e, type: 3}
+  m_Name: Beef Stew
+  m_EditorClassIdentifier: 
+  ingredients:
+  - {fileID: 11400000, guid: 0d5a84aebdbd1174399e396c2d3cf946, type: 2}
+  - {fileID: 11400000, guid: ed14f266e32d4994f80e07917b18016a, type: 2}
+  - {fileID: 11400000, guid: 96f6335002a3e644cb0ce5cae9f7a16c, type: 2}
+  - {fileID: 11400000, guid: d8cd475f2c0590547ae3039ae1b7af0b, type: 2}
+  result: {fileID: 11400000, guid: 229549f8a3567ce428635b566844bc0d, type: 2}

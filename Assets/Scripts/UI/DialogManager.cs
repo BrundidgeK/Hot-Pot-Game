@@ -14,6 +14,14 @@ public class DialogManager : MonoBehaviour
 
     public static bool dialogActive;
 
+    private void Update()
+    {
+        if (dialogActive && Input.GetKeyDown(KeyCode.Space))
+        {
+            continueDialog();
+        }
+    }
+
     public void setDialog(string name, string[] dialog)
     {
         activate(true);

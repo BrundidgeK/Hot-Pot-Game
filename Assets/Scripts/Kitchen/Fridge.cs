@@ -40,6 +40,9 @@ public class Fridge : MonoBehaviour
     }
 
     public FoodObject getFood(FoodObject.type foodType, int index) {
+        if (assortedTypes[foodType.ToString()].Count == 0)
+            return null;
+
         return assortedTypes[foodType.ToString()][index];
     }
 

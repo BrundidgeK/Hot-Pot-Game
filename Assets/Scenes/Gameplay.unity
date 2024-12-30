@@ -1235,7 +1235,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.899371, g: 0.6973267, b: 0.50624967, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1335,16 +1335,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d36da17560e794faeec44111367c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plates:
+  - {fileID: 11400000, guid: 229549f8a3567ce428635b566844bc0d, type: 2}
+  - {fileID: 11400000, guid: ddc33bc9ba4629b42958a4f2559e0c62, type: 2}
   customerPrefab: {fileID: 5683477232063300455, guid: b0d8cd94e023168439d142bc3634a48f, type: 3}
   parent: {fileID: 223846167}
   startLine: {x: -7, y: -1.5}
   spacingBTWCust: {x: 5, y: 0}
   maxCount: 4
   currentCount: 0
-  timeBTWSpawn: 10
+  timeBTWSpawn: 30
   timeElasped: 0
   animationControllers:
   - {fileID: 22100000, guid: eed5f5b4840da9943ad5265655de5119, type: 2}
+  sprites:
+  - {fileID: -1378924320, guid: c73e9444bdc7fbc448fdcbf10dd87e20, type: 3}
+  - {fileID: -462459462, guid: f7afddc0e86dfb84598541da2c1287ea, type: 3}
+  - {fileID: -1794006892, guid: 28e8e93f0f274fd4a8c30fce6afbd14a, type: 3}
+  - {fileID: 1577089605, guid: 267a335b752559c4b980c63a504455a5, type: 3}
+  - {fileID: -568241282, guid: 0568427e52fa39345a0f98fd79122cc9, type: 3}
+  - {fileID: -785272665, guid: bd284e13ae3514e40ad4e747494607f4, type: 3}
+  - {fileID: 32184223, guid: a8ffd88a509bd8146be7e416649cb956, type: 3}
+  - {fileID: 694438327, guid: 2c9a789385d73af48801e2b4eba87837, type: 3}
+  - {fileID: -1888247559, guid: 8718fb12308f8c54a86a9538e6f556ec, type: 3}
+  - {fileID: 1075410479, guid: 55e3dc1976a2a5c4db1b0b85c68bb685, type: 3}
+  - {fileID: -328984751, guid: 729d01310889c2b4a8c268566fde5190, type: 3}
+  - {fileID: 1624613495, guid: 9270f604660544d4598f7293709af865, type: 3}
+  - {fileID: -1888731768, guid: 56b3c6265a0d95d438d2500f5c9753f5, type: 3}
+  - {fileID: 1865185175, guid: b5ec6f367dab9fe4cae88baf86c19b3c, type: 3}
 --- !u!1 &623213269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,7 +1450,7 @@ MonoBehaviour:
       - m_Target: {fileID: 623213274}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
         m_MethodName: selectPlate
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1859,7 +1877,7 @@ MonoBehaviour:
       - m_Target: {fileID: 918296825}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
         m_MethodName: selectPlate
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2733,10 +2751,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1641729051}
+      - m_Target: {fileID: 623213274}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
         m_MethodName: selectPlate
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2844,16 +2862,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foods:
-  - {fileID: 11400000, guid: 17bdcac8c34ab3d4e85daccd7dbe409d, type: 2}
-  - {fileID: 11400000, guid: f78c6cec5d2cce746aaed3408ccb1f94, type: 2}
-  - {fileID: 11400000, guid: 653ccc631587c96499e6728da06ba8b1, type: 2}
-  - {fileID: 11400000, guid: 637bbc9578789404483db13691908ae0, type: 2}
-  - {fileID: 11400000, guid: 698135770b83ce448888bb3635ad1e3b, type: 2}
-  - {fileID: 11400000, guid: b89a20378e731424db5e6baf8209f719, type: 2}
-  - {fileID: 11400000, guid: 58ac3f7b46b513043bd2e1885d9bc20d, type: 2}
-  - {fileID: 11400000, guid: 8a42acac6e0756d42acda872b6a24b7c, type: 2}
-  - {fileID: 11400000, guid: e65dd9f9c7abf9f44904953c46a58301, type: 2}
-  - {fileID: 11400000, guid: d37b05f029a3e2d4bb8b836c9e5393fe, type: 2}
+  - {fileID: 11400000, guid: ed14f266e32d4994f80e07917b18016a, type: 2}
+  - {fileID: 11400000, guid: f37cd43ed21d1d54eac98180390a6a45, type: 2}
+  - {fileID: 11400000, guid: 7870e5cc532676847b407c5354e97e88, type: 2}
+  - {fileID: 11400000, guid: 0d5a84aebdbd1174399e396c2d3cf946, type: 2}
+  - {fileID: 11400000, guid: 0a867a4ef4f91684b93fd2240f6d0f02, type: 2}
+  - {fileID: 11400000, guid: 96f6335002a3e644cb0ce5cae9f7a16c, type: 2}
+  - {fileID: 11400000, guid: cbcfa0b47d2574b468a895632885565d, type: 2}
+  - {fileID: 11400000, guid: 7974b4704ec17fd4dbed45a5296af695, type: 2}
+  - {fileID: 11400000, guid: 19a1e2f7a46ae0d46a2046858b2de0c5, type: 2}
+  - {fileID: 11400000, guid: d8cd475f2c0590547ae3039ae1b7af0b, type: 2}
 --- !u!114 &1670339692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3136,7 +3154,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 15}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3380,7 +3398,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1920719872}
         m_TargetAssemblyTypeName: InventorySlot, Assembly-CSharp
         m_MethodName: selectPlate
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4095,10 +4113,6 @@ PrefabInstance:
     - target: {fileID: 903690029783719989, guid: 079bcbbcee75e554ca2cfc5f8643f700, type: 3}
       propertyPath: m_Name
       value: Fridge
-      objectReference: {fileID: 0}
-    - target: {fileID: 903690029783719989, guid: 079bcbbcee75e554ca2cfc5f8643f700, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6633967408440530520, guid: 079bcbbcee75e554ca2cfc5f8643f700, type: 3}
       propertyPath: m_Pivot.x

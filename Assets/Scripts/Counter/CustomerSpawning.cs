@@ -1,4 +1,5 @@
 
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,9 +17,13 @@ public class CustomerSpawning : MonoBehaviour
     public Vector2 spacingBTWCust;
 
     [SerializeField]
-    private int maxCount, currentCount;
+    private int maxCount;
+    private int currentCount;
+    private int spawnCount;
 
-    [SerializeField] private float timeBTWSpawn, timeElasped;
+    [SerializeField] 
+    private float timeIntervalLength, timeBtwCustomers;
+    private float curWaitTime;
 
     [SerializeField]
     private AnimatorOverrideController[] animationControllers;
@@ -35,15 +40,8 @@ public class CustomerSpawning : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (currentCount < maxCount)
-        {
-            timeElasped += Time.fixedDeltaTime;
-            if (timeElasped >= timeBTWSpawn)
-            {
-                Spawn();
-                timeElasped = 0;
-            }
-        }
+        if (DayTimer.curTime >= curWaitTime)
+            Spawn();
     }
 
     private void Spawn()
@@ -57,6 +55,11 @@ public class CustomerSpawning : MonoBehaviour
         customer.transform.parent = parent.transform;
 
         changeCount(1);
+        spawnCount++;
+
+        if (spawnCount < maxCount)
+            curWaitTime = timeBtwCustomers * spawnCount + Random.Range(0, timeIntervalLength);
+        else curWaitTime = float.MaxValue;
     }
 
     public void changeCount(int count)

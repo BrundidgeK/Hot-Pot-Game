@@ -1343,9 +1343,8 @@ MonoBehaviour:
   startLine: {x: -7, y: -1.5}
   spacingBTWCust: {x: 5, y: 0}
   maxCount: 4
-  currentCount: 0
-  timeBTWSpawn: 30
-  timeElasped: 0
+  timeIntervalLength: 15
+  timeBtwCustomers: 45
   animationControllers:
   - {fileID: 22100000, guid: eed5f5b4840da9943ad5265655de5119, type: 2}
   sprites:
@@ -2091,7 +2090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c234ed37234ddc64dae156f1f6e48453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniGame: 1
+  miniGame: 2
 --- !u!61 &1012069959
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2826,6 +2825,7 @@ GameObject:
   - component: {fileID: 1670339690}
   - component: {fileID: 1670339691}
   - component: {fileID: 1670339692}
+  - component: {fileID: 1670339693}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -2885,6 +2885,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selected: {fileID: 0}
+--- !u!114 &1670339693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670339689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5910f8135058b62489726673e5717668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayCycle: 180
 --- !u!1 &1691513694
 GameObject:
   m_ObjectHideFlags: 0

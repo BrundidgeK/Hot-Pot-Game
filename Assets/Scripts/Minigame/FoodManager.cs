@@ -31,7 +31,7 @@ public class FoodManager : MonoBehaviour
             foods.Add(food);
     }
 
-    public FoodObject foodMade()
+    public FoodObject foodMade(float quality)
     {
         foreach (RecipeObject r in availableRecipes)
         {
@@ -49,7 +49,9 @@ public class FoodManager : MonoBehaviour
 
             if(sameFood == r.ingredients.Length)
             {
-                return r.result;
+                FoodObject result = r.result;
+                result.Stars = quality == 0 ? 3 : Mathf.RoundToInt(quality);
+                return result;
             }
         }
 

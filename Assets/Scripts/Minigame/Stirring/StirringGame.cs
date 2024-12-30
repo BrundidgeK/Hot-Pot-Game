@@ -20,6 +20,7 @@ public class StirringGame : MonoBehaviour
 
     [SerializeField]
     private float successfulPresses;
+    private float failedPresses;
     [SerializeField]
     private float maxPresses;
 
@@ -80,6 +81,8 @@ public class StirringGame : MonoBehaviour
     public void addProgress(float progress)
     {
         successfulPresses += progress;
+        if(progress < 0)
+            failedPresses -= progress;
         if (successfulPresses < 0)
             successfulPresses = 0;
 
@@ -87,7 +90,7 @@ public class StirringGame : MonoBehaviour
 
         if (successfulPresses >= maxPresses)
         {
-            FindObjectOfType<InventoryManager>().addFood(foodManager.foodMade());
+            FindObjectOfType<InventoryManager>().addFood(foodManager.foodMade(failedPresses/successfulPresses));
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(1);
         }
     }

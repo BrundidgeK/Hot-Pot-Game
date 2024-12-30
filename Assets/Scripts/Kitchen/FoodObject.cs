@@ -10,6 +10,12 @@ public class FoodObject : ScriptableObject
     public string description;
     public Sprite sprite;
     public type foodType;
+    private int starRating = 3;
+    public int Stars
+    {
+        get { return starRating; }
+        set { starRating = value; }
+    }
 
     public enum type
     {

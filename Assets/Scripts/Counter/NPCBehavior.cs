@@ -37,9 +37,10 @@ public class NPCBehavior : MonoBehaviour
 
     void Awake()
     {
-        if(desiredFood == null)
-            findFoodObject();    
+        /*if(desiredFood == null)
+            findFoodObject();    */
         anim = GetComponent<Animator>();
+        anim.enabled = false;
     }
 
     // Update is called once per frame
@@ -62,7 +63,7 @@ public class NPCBehavior : MonoBehaviour
             Destroy(gameObject);
         }
 
-        anim.SetBool("Talking", dialoging);
+        //anim.SetBool("Talking", dialoging);
     }
 
     private void OnMouseDown()
@@ -86,7 +87,7 @@ public class NPCBehavior : MonoBehaviour
                 if (selectedFood.name.Equals(desiredFood.name))
                 {
                     man.setDialog(name, rightOrderDia);
-                    FindObjectOfType<InventoryManager>().getCurrentSlot().changeFood(null);
+                    FindObjectOfType<InventoryManager>().clearSlot();
                     orderComplete = true;
                 }
                 else
@@ -99,6 +100,16 @@ public class NPCBehavior : MonoBehaviour
     {
         List<FoodObject> available = FindObjectOfType<Fridge>().getFoodList();
         desiredFood = available[Random.Range(0, available.Count)];
+        introDialog[introDialog.Length - 1] += desiredFood.name;
+        wrongOrderDia[wrongOrderDia.Length - 1] += desiredFood.name;
+    }
+
+    public void setDesiredFood(FoodObject food)
+    {
+        if (desiredFood != null)
+            return;
+
+        desiredFood = food;
         introDialog[introDialog.Length - 1] += desiredFood.name;
         wrongOrderDia[wrongOrderDia.Length - 1] += desiredFood.name;
     }

@@ -21,12 +21,21 @@ public class FridgeSlot : MonoBehaviour
 
         fridge = FindObjectOfType<Fridge>();
 
+        if (fridge.listLength(type) == 0)
+        {
+            foodText.text = "Empty";
+            return;
+        }
+
         food = fridge.getFood(type, index);
         foodText.text = food.name;
     }
 
     public void NextInList()
     {
+        if (fridge.listLength(type) == 0)
+            return;
+
         if (++index == fridge.listLength(type))
             index = 0;
         food = fridge.getFood(type, index);

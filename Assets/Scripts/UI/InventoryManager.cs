@@ -29,9 +29,10 @@ public class InventoryManager : MonoBehaviour
 
     public void selectPlate(InventorySlot slot)
     {
-        if (selected != null)
-            selected.deselectPlate();
+        InventorySlot old = selected;
         selected = slot;
+        if (old != null)
+            old.selectPlate(false);
     }
 
     public FoodObject getSelectedFood()
@@ -44,5 +45,10 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot getCurrentSlot()
     {
         return selected;
+    }
+
+    public void clearSlot()
+    {
+        selected.changeFood(null);
     }
 }

@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 public class CustomerSpawning : MonoBehaviour
 {
     [SerializeField]
+    private List<FoodObject> plates;
+
+    [SerializeField]
     private GameObject customerPrefab, parent;
 
     public Vector2 startLine;
@@ -19,6 +22,8 @@ public class CustomerSpawning : MonoBehaviour
 
     [SerializeField]
     private AnimatorOverrideController[] animationControllers;
+    [SerializeField]
+    private Sprite[] sprites;
 
 
     // Start is called before the first frame update
@@ -43,10 +48,12 @@ public class CustomerSpawning : MonoBehaviour
 
     private void Spawn()
     {
-        AnimatorOverrideController aoc = animationControllers[Random.Range(0, animationControllers.Length)];
+        //AnimatorOverrideController aoc = animationControllers[Random.Range(0, animationControllers.Length)];
         Vector2 position = startLine + spacingBTWCust * currentCount;
         GameObject customer = Instantiate(customerPrefab, position, Quaternion.identity);
-        customer.GetComponent<Animator>().runtimeAnimatorController = aoc;
+        //customer.GetComponent<Animator>().runtimeAnimatorController = aoc;
+        customer.GetComponentInChildren<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
+        customer.GetComponent<NPCBehavior>().setDesiredFood(plates[Random.Range(0, plates.Count)]);
         customer.transform.parent = parent.transform;
 
         changeCount(1);

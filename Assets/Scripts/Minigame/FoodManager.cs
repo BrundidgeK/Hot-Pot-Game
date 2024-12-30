@@ -8,6 +8,22 @@ public class FoodManager : MonoBehaviour
     private RecipeObject[] availableRecipes;
 
     private List<FoodObject> foods = new List<FoodObject>();
+    private InventoryManager inventoryManager;
+
+    private void Awake()
+    {
+        inventoryManager = FindObjectOfType<InventoryManager>();
+        inventoryManager.selectPlate(null);
+    }
+
+    private void Update()
+    {
+        if(inventoryManager.getCurrentSlot() != null)
+        {
+            addFood(inventoryManager.getSelectedFood());
+            inventoryManager.clearSlot();
+        }
+    }
 
     public void addFood(FoodObject food)
     {

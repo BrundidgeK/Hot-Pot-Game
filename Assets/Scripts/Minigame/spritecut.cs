@@ -36,8 +36,27 @@ public class TextureDivider : MonoBehaviour
                 GameObject n = new GameObject();
                 SpriteRenderer sr = n.AddComponent<SpriteRenderer>();
                 sr.sprite = newSprite;
-                n.transform.position = new Vector3(i * 2.25f, j * 2.25f, 0);
                 n.transform.parent = spritesRoot.transform;
+
+                if (i == 0 && j == 0)//bottom left
+                {
+                    n.transform.position = new Vector3(-1.25f * n.transform.localScale.x, -1.25f * n.transform.localScale.y, 0);
+                }
+
+                if (i == 1 && j == 0)//bottom right
+                {
+                    n.transform.position = new Vector3(1.25f * n.transform.localScale.x, -1.25f * n.transform.localScale.y, 0);
+                }
+
+                if (i == 0 && j == 1)//top left
+                {
+                    n.transform.position = new Vector3(-1.25f * n.transform.localScale.x, 1.25f * n.transform.localScale.y, 0);
+                }
+
+                if (i == 1 && j == 1)//top right
+                {
+                    n.transform.position = new Vector3(1.25f * n.transform.localScale.x, 1.25f * n.transform.localScale.y, 0);
+                }
             }
         }
     }
